@@ -1,0 +1,330 @@
+/* Basic Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 1rem; /* Add padding around the body */
+}
+
+/* Theme Variables */
+:root {
+    --bg-color-light: #f4f7f6;
+    --text-color-light: #333;
+    --card-bg-light: #ffffff;
+    --primary-color-light: #007bff;
+    --primary-hover-light: #0056b3;
+    --border-color-light: #ddd;
+    --input-bg-light: #fff;
+    --table-header-bg-light: #e9ecef;
+    --danger-color-light: #dc3545;
+    --danger-hover-light: #c82333;
+    --success-color-light: #28a745;
+
+    --bg-color-dark: #1a1a2e;
+    --text-color-dark: #e0e0e0;
+    --card-bg-dark: #162447;
+    --primary-color-dark: #1f4068;
+    --primary-hover-dark: #1b3358;
+    --border-color-dark: #444;
+    --input-bg-dark: #2a2a4a;
+    --table-header-bg-dark: #1b3358;
+    --danger-color-dark: #e43f5a;
+    --danger-hover-dark: #c73047;
+    --success-color-dark: #17b978;
+}
+
+/* Apply Theme Variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto; /* Increased top/bottom margin */
+    padding: 1.5rem; /* Increased padding */
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 1rem; /* Add gap between items */
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: 0; /* Remove default margin */
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Sections */
+section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--bg-color); /* Slightly different background for sections */
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+section h2 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Form Styling */
+#milk-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 1rem;
+    align-items: end; /* Align items to the bottom */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1.5rem; /* Align checkbox with button */
+}
+
+label {
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+input[type="date"],
+input[type="number"],
+select {
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    width: 100%; /* Ensure inputs take full width */
+}
+
+input[type="checkbox"] {
+    width: auto; /* Reset width for checkbox */
+    accent-color: var(--primary-color);
+    transform: scale(1.2); /* Make checkbox slightly larger */
+}
+
+/* Buttons */
+button,
+select#language-select {
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+button:hover,
+select#language-select:hover {
+    background-color: var(--primary-hover);
+}
+
+button[type="submit"] {
+    grid-column: 1 / -1; /* Make submit button span full width in grid */
+    margin-top: 1rem; /* Add some space above */
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.5rem;
+}
+#theme-toggle:hover {
+     background-color: rgba(128, 128, 128, 0.1); /* Subtle hover */
+}
+#theme-toggle span {
+    display: none; /* Hide text, only show icon part */
+}
+
+button.delete-btn {
+    background-color: var(--danger-color);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8em;
+}
+button.delete-btn:hover {
+    background-color: var(--danger-hover);
+}
+
+#clear-all {
+    background-color: var(--danger-color);
+    margin-top: 1rem;
+    display: block; /* Make it block to center easily if needed */
+    width: fit-content; /* Size to content */
+}
+#clear-all:hover {
+    background-color: var(--danger-hover);
+}
+
+/* Summary Section */
+.summary-details p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1em;
+}
+.summary-details span:first-child {
+    font-weight: 600; /* Make labels bold */
+}
+
+/* Entries Table */
+.table-container {
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+}
+
+#entries-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#entries-table th,
+#entries-table td {
+    border: 1px solid var(--border-color);
+    padding: 0.7rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#entries-table th {
+    background-color: var(--table-header-bg);
+    font-weight: 600;
+}
+
+#entries-table tbody tr:nth-child(even) {
+    background-color: rgba(128, 128, 128, 0.05); /* Subtle striping */
+}
+
+.paid-status-toggle {
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.paid {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.unpaid {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.no-entries-message {
+    text-align: center;
+    margin-top: 1rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.85em;
+    color: #777; /* Footer text is usually less prominent */
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Light Theme (Default) */
+body {
+    --bg-color: var(--bg-color-light);
+    --text-color: var(--text-color-light);
+    --card-bg: var(--card-bg-light);
+    --primary-color: var(--primary-color-light);
+    --primary-hover: var(--primary-hover-light);
+    --border-color: var(--border-color-light);
+    --input-bg: var(--input-bg-light);
+    --table-header-bg: var(--table-header-bg-light);
+    --danger-color: var(--danger-color-light);
+    --danger-hover: var(--danger-hover-light);
+    --success-color: var(--success-color-light);
+}
+
+/* Dark Theme */
+body.dark-theme {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+    --card-bg: var(--card-bg-dark);
+    --primary-color: var(--primary-color-dark);
+    --primary-hover: var(--primary-hover-dark);
+    --border-color: var(--border-color-dark);
+    --input-bg: var(--input-bg-dark);
+    --table-header-bg: var(--table-header-bg-dark);
+    --danger-color: var(--danger-color-dark);
+    --danger-hover: var(--danger-hover-dark);
+    --success-color: var(--success-color-dark);
+}
+
+/* Dark theme specific adjustments if needed */
+body.dark-theme input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Make date picker icon visible in dark mode */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #milk-form {
+        grid-template-columns: 1fr; /* Stack form elements */
+    }
+     .form-group-checkbox {
+        padding-top: 0; /* Reset padding */
+    }
+    button[type="submit"] {
+       margin-top: 0.5rem;
+    }
+    #entries-table th,
+    #entries-table td {
+        padding: 0.5rem;
+        font-size: 0.9em;
+    }
+}

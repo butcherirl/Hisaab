@@ -1,1 +1,92 @@
-<!DOCTYPR html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="title">Milk Hisaab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 data-translate="title">Milk Hisaab</h1>
+            <div class="controls">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <span data-translate="toggle_theme">Toggle Theme</span> 🌙/☀️
+                </button>
+                <select id="language-select" aria-label="Select language">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <h2 data-translate="add_entry">Add New Entry</h2>
+                <form id="milk-form">
+                    <div class="form-group">
+                        <label for="date" data-translate="date">Date:</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity" data-translate="quantity">Quantity (Liters):</label>
+                        <input type="number" id="quantity" step="0.1" min="0" required placeholder="e.g., 1.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="rate" data-translate="rate">Rate (per Liter):</label>
+                        <input type="number" id="rate" step="0.01" min="0" required placeholder="e.g., 50.00">
+                    </div>
+                     <div class="form-group form-group-checkbox">
+                        <label for="paid" data-translate="paid_status">Paid:</label>
+                        <input type="checkbox" id="paid">
+                    </div>
+                    <button type="submit" data-translate="add_button">Add Entry</button>
+                </form>
+            </section>
+
+            <section class="summary-section">
+                <h2 data-translate="summary">Summary</h2>
+                <div class="summary-details">
+                    <p><span data-translate="total_quantity">Total Quantity</span>: <span id="total-quantity">0</span> L</p>
+                    <p><span data-translate="total_amount">Total Amount</span>: ₹<span id="total-amount">0.00</span></p>
+                    <p><span data-translate="total_due">Total Due (Unpaid)</span>: ₹<span id="total-due">0.00</span></p>
+                </div>
+                 <button id="clear-all" data-translate="clear_all_data">Clear All Data</button>
+            </section>
+
+            <section class="entries-section">
+                <h2 data-translate="entries">Entries</h2>
+                <div class="table-container">
+                    <table id="entries-table">
+                        <thead>
+                            <tr>
+                                <th data-translate="date">Date</th>
+                                <th data-translate="quantity_short">Qty (L)</th>
+                                <th data-translate="rate_short">Rate (₹/L)</th>
+                                <th data-translate="amount">Amount (₹)</th>
+                                <th data-translate="paid_status">Paid</th>
+                                <th data-translate="actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="entries-body">
+                            <!-- Milk entries will be loaded here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                 <p id="no-entries" class="no-entries-message" data-translate="no_entries_yet">No entries yet. Add one above!</p>
+            </section>
+        </main>
+
+        <footer>
+            <p data-translate="footer_opensource">This is an open-source tool.</p>
+            <p data-translate="footer_localstorage">All data is stored locally in your browser only. No data is sent to any server.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
