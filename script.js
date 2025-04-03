@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- State ---
     let currentLanguage = 'en';
     let currentTheme = 'light';
-    let defaultRate = 50.00; // Default initial rate
+    let defaultRate = 40.00; // Default initial rate
     let monthlyData = {}; // Structure: { "YYYY-MM": { day: { mQty: 0, eQty: 0, rate: 50, paid: false }, ... } }
     let currentDisplayDate = new Date(); // Represents the month/year being viewed
 
